@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TaskFlow &mdash; Project Dashboard</title>
+<link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="app-header__brand">
+      <span class="app-header__mark">TF</span>
+      <span class="app-header__name">TaskFlow</span>
+    </div>
+
+    <div class="app-header__project">
+      <label for="project-select" class="visually-hidden">Select project</label>
+      <select id="project-select">
+        <option value="">Loading projects&hellip;</option>
+      </select>
+      <button id="new-project-btn" class="btn btn--ghost" type="button">+ New project</button>
+    </div>
+  </header>
+
+  <main class="app-main">
+
+    <section class="panel panel--stats" id="stats-panel" aria-label="Project statistics">
+      <h2 class="panel__title">Statistics</h2>
+      <div id="stats-content" class="stats-grid">
+        <p class="muted">Select a project to see statistics.</p>
+      </div>
+    </section>
+
+    <section class="panel panel--quickadd" aria-label="AI Quick Add">
+      <h2 class="panel__title">Quick Add <span class="badge">AI</span></h2>
+      <form id="quickadd-form" class="quickadd-form">
+        <input
+          type="text"
+          id="quickadd-input"
+          placeholder='Try: "Finish the report tomorrow urgent"'
+          autocomplete="off"
+        />
+        <button class="btn btn--primary" type="submit">Add with AI</button>
+      </form>
+      <p id="quickadd-error" class="field-error" hidden></p>
+    </section>
+
+    <section class="panel panel--create" aria-label="Create task">
+      <h2 class="panel__title">New Task</h2>
+      <form id="task-form" class="task-form">
+        <div class="field">
+          <label for="task-title">Title</label>
+          <input type="text" id="task-title" name="title" placeholder="e.g. Review pull request" />
+          <p class="field-error" id="task-title-error" hidden>Title cannot be empty.</p>
+        </div>
+
+        <div class="field field--row">
+          <div class="field">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="task-due">Due</label>
+            <input type="text" id="task-due" name="due_date" placeholder="e.g. next friday" />
+          </div>
+        </div>
+
+        <button class="btn btn--primary" type="submit">Add task</button>
+      </form>
+    </section>
+
+    <section class="panel panel--tasks" aria-label="Tasks">
+      <div class="panel__header-row">
+        <h2 class="panel__title">Tasks</h2>
+        <div class="task-controls">
+          <button id="sort-btn" class="btn btn--ghost" type="button">Sort by priority</button>
+          <button id="refresh-btn" class="btn btn--ghost" type="button">Refresh</button>
+        </div>
+      </div>
+
+      <div class="search-row">
+        <input type="text" id="search-input" placeholder="Search by exact title&hellip;" autocomplete="off" />
+        <select id="search-algo">
+          <option value="linear">Linear search</option>
+          <option value="binary">Binary search</option>
+        </select>
+        <button id="search-btn" class="btn btn--ghost" type="button">Search</button>
+      </div>
+
+      <div id="task-list-status" class="muted" hidden></div>
+      <ul id="task-list" class="task-list" aria-live="polite"></ul>
+    </section>
+
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
