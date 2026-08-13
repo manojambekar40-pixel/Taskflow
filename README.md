@@ -175,7 +175,9 @@ matched due-date phrase are stripped from the original-case description
 to build the title; an empty result becomes `"Untitled task"`.
 
 Date phrases checked in order: `today`, `tomorrow`, `next week`,
-`next monday`..`next sunday`, then `monday`..`sunday`. First match wins.
+`next monday`..`next sunday`, then `monday`..`sunday`. First match wins.### Optional Real LLM
+### Optional Real LLM
+The real Groq LLM integration is optional and is controlled by the `USE_REAL_LLM` feature flag. The default configuration keeps this flag disabled, so the AI quick-add feature works without an API key or network access. When enabled, the Groq model is used for natural-language task parsing, while the application retains a deterministic fallback parser if the LLM request fails.
 
 ### Five worked examples
 
@@ -277,3 +279,11 @@ Run `python benchmark_algorithms.py` to generate comparison counts at
 - **SQLite locked / data missing on Render** — Render's local disk is
   ephemeral; set `DATABASE_URL` to a managed PostgreSQL instance for
   production persistence.
+
+## Environment Setup
+
+Create and activate a virtual environment:
+
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
