@@ -1,4 +1,5 @@
 """
+def insertion_sort(    # Ascending order sort; comparisons happen strictly on the provided key.)
 algorithms.py
 -------------
 Custom DSA implementations used by TaskFlow. These are used directly by
