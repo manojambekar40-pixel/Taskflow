@@ -277,3 +277,11 @@ Run `python benchmark_algorithms.py` to generate comparison counts at
 - **SQLite locked / data missing on Render** — Render's local disk is
   ephemeral; set `DATABASE_URL` to a managed PostgreSQL instance for
   production persistence.
+
+## Environment Setup
+
+Create and activate a virtual environment:
+
+```powershell
+python -m venv venv
+venv\Scripts\Activate.ps1
